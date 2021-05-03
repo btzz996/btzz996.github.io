@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>冰糖渣子的影子之书</title>
+  <title>冰糖的博客</title>
   
-  
+  <subtitle>冰糖渣子的影子之书</subtitle>
   <link href="http://btzz996.github.io/atom.xml" rel="self"/>
   
   <link href="http://btzz996.github.io/"/>
@@ -10,7 +10,7 @@
   <id>http://btzz996.github.io/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>冰糖渣子</name>
     
   </author>
   
