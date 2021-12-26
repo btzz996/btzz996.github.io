@@ -4,9 +4,30 @@
   
     
     <entry>
+      <title>关于本博客</title>
+      <link href="/2021/122616647.html"/>
+      <url>/2021/122616647.html</url>
+      
+        <content type="html"><![CDATA[<p>这几天想重新写起博客来，结果因为换了电脑，得重新搭建，还好本博客使用的是hexo + GitHubPage搭建的，本来也不难。</p><p>下面记录一些我写文章常用的命令，以防以后忘记</p><h1 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h1><h2 id="1-新建一篇文章"><a href="#1-新建一篇文章" class="headerlink" title="1.新建一篇文章"></a>1.新建一篇文章</h2><p><code>hexo new "title"</code></p><blockquote><p>hexo n “title”</p></blockquote><h2 id="2-生成页面"><a href="#2-生成页面" class="headerlink" title="2.生成页面"></a>2.生成页面</h2><p><code>hexo generate</code></p><blockquote><p>hexo g </p></blockquote><h2 id="3-启动服务预览"><a href="#3-启动服务预览" class="headerlink" title="3.启动服务预览"></a>3.启动服务预览</h2><p><code>hexo server</code></p><blockquote><p>hexo s</p></blockquote><h2 id="4-部署"><a href="#4-部署" class="headerlink" title="4.部署"></a>4.部署</h2><p><code>hexo deploy</code></p><blockquote><p>hexo d</p></blockquote><h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>先新建一篇文章，一般会生成一个.md文件在\source_posts\文档下。</p><p>md文件的编写语法百度一下就有。</p><p>写完之后执行<code>hexo g -d</code>部署就完事了。</p>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
-      <link href="2021/050316107.html"/>
-      <url>2021/050316107.html</url>
+      <link href="/2021/050316107.html"/>
+      <url>/2021/050316107.html</url>
       
         <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server</code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate</code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy</code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
       

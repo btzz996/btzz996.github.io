@@ -6,7 +6,7 @@
   <link href="http://btzz996.github.io/atom.xml" rel="self"/>
   
   <link href="http://btzz996.github.io/"/>
-  <updated>2021-05-03T14:31:41.501Z</updated>
+  <updated>2021-12-26T13:40:34.790Z</updated>
   <id>http://btzz996.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>关于本博客</title>
+    <link href="http://btzz996.github.io/2021/122616647.html"/>
+    <id>http://btzz996.github.io/2021/122616647.html</id>
+    <published>2021-12-26T11:54:06.000Z</published>
+    <updated>2021-12-26T13:40:34.790Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;这几天想重新写起博客来，结果因为换了电脑，得重新搭建，还好本博客使用的是hexo + GitHubPage搭建的，本来也不难。&lt;/p&gt;
+&lt;p&gt;下面记录一些我写文章常用的命令，以防以后忘记&lt;/p&gt;
+&lt;h1 id=&quot;hexo命令&quot;&gt;&lt;a href=&quot;#hexo命令&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="hexo" scheme="http://btzz996.github.io/tags/hexo/"/>
+    
+    <category term="git" scheme="http://btzz996.github.io/tags/git/"/>
+    
+  </entry>
   
   <entry>
     <title>Hello World</title>
