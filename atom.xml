@@ -6,7 +6,7 @@
   <link href="http://btzz996.github.io/atom.xml" rel="self"/>
   
   <link href="http://btzz996.github.io/"/>
-  <updated>2021-12-26T13:40:42.662Z</updated>
+  <updated>2021-12-26T17:32:23.585Z</updated>
   <id>http://btzz996.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>hexo博客中如何插入图片</title>
+    <link href="http://btzz996.github.io/2021/122729800.html"/>
+    <id>http://btzz996.github.io/2021/122729800.html</id>
+    <published>2021-12-26T16:45:24.000Z</published>
+    <updated>2021-12-26T17:32:23.585Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;写博客时难免遇到要插入图片的情况，为了防止以后忘记，特开一篇文章记录。&lt;/p&gt;
+&lt;h2 id=&quot;1-绝对引用&quot;&gt;&lt;a href=&quot;#1-绝对引用&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    
+    <category term="hexo" scheme="http://btzz996.github.io/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>关于本博客</title>
