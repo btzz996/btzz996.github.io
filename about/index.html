@@ -246,7 +246,7 @@
 
 <script>
     // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
+    var bannerUrl = "/medias/banner/" + new Date().getHours() + '.jpg';
     $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
 </script>
 
@@ -263,7 +263,7 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">3</a></span>
+    <span class="count"><a href="/">4</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -272,7 +272,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">2</a></span>
+    <span class="count"><a href="/tags">3</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -288,7 +288,7 @@
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">3</a></span>
+    <span class="count"><a href="/">4</a></span>
     <span class="name">文章</span>
 </div>
 
@@ -297,7 +297,7 @@
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">2</a></span>
+    <span class="count"><a href="/tags">3</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -441,7 +441,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,1,0,0,0,0,0,0,2],
+                data: [0,0,0,0,0,1,0,0,0,0,0,0,3],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -507,7 +507,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["hexo","git"]
+                data: ["hexo","git","-传统文化"]
             }
         ],
         yAxis: [
@@ -520,7 +520,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [2,1],
+                data: [2,1,1],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -646,6 +646,12 @@
             
             <a href="/tags/git/">
                 <span class="chip center-align waves-effect waves-light chip-default">git</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E4%BC%A0%E7%BB%9F%E6%96%87%E5%8C%96/">
+                <span class="chip center-align waves-effect waves-light chip-default">-传统文化</span>
             </a>
             
             
