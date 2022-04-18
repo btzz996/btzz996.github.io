@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="关于本博客, 冰糖的博客">
+    <meta name="keywords" content="快速搭建ssm项目, 冰糖的博客">
     <meta name="description" content="冰糖渣子的影子之书">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>关于本博客 | 冰糖的博客</title>
+    <title>快速搭建ssm项目 | 冰糖的博客</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -220,12 +220,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">关于本博客</h1>
+                    <h1 class="description center-align post-title">快速搭建ssm项目</h1>
                 </div>
             </div>
         </div>
@@ -341,12 +341,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hexo/">
-                                <span class="chip bg-color">hexo</span>
-                            </a>
-                        
-                            <a href="/tags/git/">
-                                <span class="chip bg-color">git</span>
+                            <a href="/tags/JAVA/">
+                                <span class="chip bg-color">JAVA</span>
                             </a>
                         
                     </div>
@@ -361,7 +357,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2021-12-26
+                    2022-04-18
                 </div>
                 
 
@@ -382,27 +378,454 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>这几天想重新写起博客来，结果因为换了电脑，得重新搭建，还好本博客使用的是hexo + GitHubPage搭建的，本来也不难。</p>
-<p>下面记录一些我写文章常用的命令，以防以后忘记</p>
-<h1 id="hexo命令"><a href="#hexo命令" class="headerlink" title="hexo命令"></a>hexo命令</h1><h2 id="1-新建一篇文章"><a href="#1-新建一篇文章" class="headerlink" title="1.新建一篇文章"></a>1.新建一篇文章</h2><p><code>hexo new "title"</code></p>
+                <h1 id="1-创建maven项目"><a href="#1-创建maven项目" class="headerlink" title="1.创建maven项目"></a>1.创建maven项目</h1><p>创建完成后右键项目名称 , Add Framework Support - web , 升级为web项目</p>
+<h1 id="2-引入jar包"><a href="#2-引入jar包" class="headerlink" title="2.引入jar包"></a>2.引入jar包</h1><p>在pom.xml文件中设置打包方式为war</p>
+<pre><code>&lt;packaging&gt;war&lt;/packaging&gt;
+</code></pre>
+<p>在<code>&lt;dependencies&gt;&lt;/dependencies&gt;</code>中引入jar包 , 所需jar包有:</p>
 <blockquote>
-<p>hexo n “title”</p>
+<ul>
+<li>spring</li>
+<li>spring-web</li>
+<li>spring-webmvc</li>
+<li>spring-jdbc</li>
+<li>spring-context</li>
+<li>spring-core</li>
+<li>spring-beans</li>
+<li>spring-aop</li>
+<li>spring-aspects</li>
+<li>spring-expression</li>
+<li>spring-massaging</li>
+<li>spring-test</li>
+<li>spring-tx</li>
+<li>mysql-connector-java</li>
+<li>standard</li>
+<li>mybatis</li>
+<li>mybatis-spring</li>
+<li>jstl</li>
+<li>javax.servlet-api</li>
+<li>Junit</li>
+<li>druid</li>
+<li>fastjson</li>
+</ul>
 </blockquote>
-<h2 id="2-生成页面"><a href="#2-生成页面" class="headerlink" title="2.生成页面"></a>2.生成页面</h2><p><code>hexo generate</code></p>
+<p>引入代码</p>
+<pre><code>&lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-webmvc --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-webmvc&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-jdbc --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-jdbc&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+            &lt;type&gt;pom&lt;/type&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-aop --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-aop&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-context --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-context&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-core --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-core&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-beans --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-beans&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-web --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-web&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-aspects --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-aspects&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-expression --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-expression&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-messaging --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-messaging&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-test --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-test&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.springframework/spring-tx --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.springframework&lt;/groupId&gt;
+            &lt;artifactId&gt;spring-tx&lt;/artifactId&gt;
+            &lt;version&gt;5.3.18&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;mysql&lt;/groupId&gt;
+            &lt;artifactId&gt;mysql-connector-java&lt;/artifactId&gt;
+            &lt;version&gt;8.0.28&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- https://mvnrepository.com/artifact/taglibs/standard --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;taglibs&lt;/groupId&gt;
+            &lt;artifactId&gt;standard&lt;/artifactId&gt;
+            &lt;version&gt;1.1.2&lt;/version&gt;
+        &lt;/dependency&gt;
+
+        &lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis&lt;/artifactId&gt;
+            &lt;version&gt;3.5.7&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.mybatis/mybatis-spring --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.mybatis&lt;/groupId&gt;
+            &lt;artifactId&gt;mybatis-spring&lt;/artifactId&gt;
+            &lt;version&gt;2.0.6&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/javax.servlet/jstl --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+            &lt;artifactId&gt;jstl&lt;/artifactId&gt;
+            &lt;version&gt;1.2&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;javax.servlet&lt;/groupId&gt;
+            &lt;artifactId&gt;javax.servlet-api&lt;/artifactId&gt;
+            &lt;version&gt;3.1.0&lt;/version&gt;
+            &lt;scope&gt;provided&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;org.junit.jupiter&lt;/groupId&gt;
+            &lt;artifactId&gt;junit-jupiter-api&lt;/artifactId&gt;
+            &lt;version&gt;5.7.0&lt;/version&gt;
+            &lt;scope&gt;test&lt;/scope&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/com.alibaba/druid --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;druid&lt;/artifactId&gt;
+            &lt;version&gt;1.2.9&lt;/version&gt;
+        &lt;/dependency&gt;
+        &lt;!-- https://mvnrepository.com/artifact/com.alibaba/fastjson --&gt;
+        &lt;dependency&gt;
+            &lt;groupId&gt;com.alibaba&lt;/groupId&gt;
+            &lt;artifactId&gt;fastjson&lt;/artifactId&gt;
+            &lt;version&gt;1.2.80&lt;/version&gt;
+        &lt;/dependency&gt;
+</code></pre>
+<h1 id="3-创建配置文件"><a href="#3-创建配置文件" class="headerlink" title="3.创建配置文件"></a>3.创建配置文件</h1><p>在resource文件夹中创建配置文件</p>
+<h2 id="3-1-创建applicationContext-xml"><a href="#3-1-创建applicationContext-xml" class="headerlink" title="3.1 创建applicationContext.xml"></a>3.1 创建applicationContext.xml</h2><pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"&gt;
+
+&lt;/beans&gt;
+</code></pre>
+<h2 id="3-2-创建database-properties"><a href="#3-2-创建database-properties" class="headerlink" title="3.2 创建database.properties"></a>3.2 创建database.properties</h2><p>mysql 8.0以下<code>driver=com.mysql.jdbc.driver</code> </p>
+<p>mysql 8.0以上<code>driver=com.mysql.cj.jdbc.driver</code> , url多加一项时区<code>serverTimezone=UTC</code></p>
+<pre><code>driver=com.mysql.cj.jdbc.Driver
+url=jdbc:mysql://localhost:3306/course?useSSL=true&amp;useUnicode=true&amp;characterEncoding=utf8&amp;serverTimezone=UTC
+user=root
+pwd=123456
+</code></pre>
+<h1 id="4-项目结构"><a href="#4-项目结构" class="headerlink" title="4.项目结构"></a>4.项目结构</h1><p>在java文件夹中搭建项目结构</p>
+<h2 id="4-1-创建entity包"><a href="#4-1-创建entity包" class="headerlink" title="4.1 创建entity包"></a>4.1 创建entity包</h2><p>把数据库表转成实体类 , 属性私有化 , 生成get&amp;set方法</p>
+<h2 id="4-2-创建dao包"><a href="#4-2-创建dao包" class="headerlink" title="4.2 创建dao包"></a>4.2 创建dao包</h2><p>有多少个实体类就建多少个Mapper接口</p>
+<pre><code>    //新增一名用户
+    int addUser(User user);
+    //删除一名用户
+    int deleteUserById(int id);
+    //更新一名用户
+    int updateUser(User user);
+    //查询一名用户
+    User queryUserById(int id);
+    //查询全部用户
+    List&lt;User&gt; queryAllUser();
+</code></pre>
+<p>然后创建与Mapper接口同名的xml文件</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;
+&lt;mapper namespace="com.course.dao.UserMapper"&gt;
+    &lt;insert id="addUser" parameterType="User"&gt;
+        insert into course.user (uname,name,pwd,identity)
+        values (#{uname},#{name},#{pwd},#{identity});
+    &lt;/insert&gt;
+
+    &lt;delete id="deleteUserById" parameterType="int"&gt;
+        delete from course.user
+        where id = #{id};
+    &lt;/delete&gt;
+
+    &lt;update id="updateUser" parameterType="User"&gt;
+        update course.user
+        set uname=#{tname},name=#{name},pwd=#{pwd},identity=#{identity}
+        where id=#{id};
+    &lt;/update&gt;
+
+    &lt;select id="queryUserById" resultType="User"&gt;
+        select * from course.user
+        where id = #{id};
+    &lt;/select&gt;
+
+    &lt;select id="queryAllUser" resultType="User"&gt;
+        select * from course.user;
+    &lt;/select&gt;
+&lt;/mapper&gt;
+</code></pre>
+<h2 id="4-3-创建service包"><a href="#4-3-创建service包" class="headerlink" title="4.3 创建service包"></a>4.3 创建service包</h2><p>有多少个mapper接口就建多少个service接口</p>
+<p>直接将mapper接口中的代码复制到service接口里</p>
+<p>有多少个service接口就建多少个Impl实现类</p>
+<p>在实现类中调dao层</p>
+<pre><code>    private UserMapper userMapper;
+
+    public void setUserMapper(UserMapper userMapper) {
+        this.userMapper = userMapper;
+    }
+</code></pre>
+<p>实现方法</p>
+<pre><code>
+    @Override
+    public int addUser(User user) {
+        return userMapper.addUser(user);
+    }
+
+    @Override
+    public int deleteUserById(int id) {
+        return userMapper.deleteUserById(id);
+    }
+
+    @Override
+    public int updateUser(User user) {
+        return userMapper.updateUser(user);
+    }
+
+    @Override
+    public User queryUserById(int id) {
+        return userMapper.queryUserById(id);
+    }
+
+    @Override
+    public List&lt;User&gt; queryAllUser() {
+        return userMapper.queryAllUser();
+    }
+</code></pre>
+<h2 id="4-4-创建controller包"><a href="#4-4-创建controller包" class="headerlink" title="4.4 创建controller包"></a>4.4 创建controller包</h2><p>controller层调用service层 , 稍后细说</p>
+<h1 id="5-创建mybatis-config-xml"><a href="#5-创建mybatis-config-xml" class="headerlink" title="5.创建mybatis-config.xml"></a>5.创建mybatis-config.xml</h1><p>在resource文件夹中创建mybatis-config.xml文件 , 将配置数据源交给spring去做 , 在里面配置Mapper文件即可 , dao层中有几个Mapper文件就写几个</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8" ?&gt;
+&lt;!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd"&gt;
+&lt;configuration&gt;
+
+    &lt;typeAliases&gt;
+        &lt;package name="com.course.entity"/&gt;
+    &lt;/typeAliases&gt;
+
+    &lt;mappers&gt;
+        &lt;mapper class="com.course.dao.UserMapper"/&gt;
+    &lt;/mappers&gt;
+&lt;/configuration&gt;
+</code></pre>
+<h1 id="6-创建spring-dao-xml文件"><a href="#6-创建spring-dao-xml文件" class="headerlink" title="6.创建spring-dao.xml文件"></a>6.创建spring-dao.xml文件</h1><p>在resource文件夹中创建spring-dao.xml文件,主要实现以下操作</p>
 <blockquote>
-<p>hexo g </p>
+<ol>
+<li>关联数据库配置文件</li>
+<li>数据库连接池</li>
+<li>sqlSessionFactory</li>
+<li>配置dao接口扫描包 动态实现dao接口可以注入到spring容器中</li>
+</ol>
 </blockquote>
-<h2 id="3-启动服务预览"><a href="#3-启动服务预览" class="headerlink" title="3.启动服务预览"></a>3.启动服务预览</h2><p><code>hexo server</code></p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd"&gt;
+    &lt;!-- 1.关联数据库配置文件 --&gt;
+    &lt;context:property-placeholder location="classpath:database.properties"/&gt;
+    &lt;!-- 2.连接池 --&gt;
+    &lt;bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"&gt;
+        &lt;property name="driverClassName" value="${driver}"&gt;&lt;/property&gt;
+        &lt;property name="url" value="${url}"&gt;&lt;/property&gt;
+        &lt;property name="username" value="${user}"&gt;&lt;/property&gt;
+        &lt;property name="password" value="${pwd}"&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;!-- 3.sqlSessionFactory --&gt;
+    &lt;bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean"&gt;
+        &lt;property name="dataSource" ref="dataSource"/&gt;
+        &lt;!-- 绑定mybatis的配置文件 --&gt;
+        &lt;property name="configLocation" value="classpath:mybatis-config.xml"&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+    &lt;!-- 4.配置dao接口扫描包,动态的实现了Dao接口可以注入到spring容器中 --&gt;
+    &lt;bean class="org.mybatis.spring.mapper.MapperScannerConfigurer"&gt;
+        &lt;!--注入sqlSessionFactory--&gt;
+        &lt;property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"&gt;&lt;/property&gt;
+        &lt;!--要扫描的dao包--&gt;
+        &lt;property name="basePackage" value="com.course.dao"&gt;&lt;/property&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+<h1 id="7-创建spring-service-xml文件"><a href="#7-创建spring-service-xml文件" class="headerlink" title="7.创建spring-service.xml文件"></a>7.创建spring-service.xml文件</h1><p>在resource文件夹中创建spring-service.xml文件 , 主要实现以下操作</p>
 <blockquote>
-<p>hexo s</p>
+<ol>
+<li>扫描service下的包</li>
+<li>将所有业务类注入到spring , 可以通过xml配置 , 也可以用@Service注解实现</li>
+</ol>
 </blockquote>
-<h2 id="4-部署"><a href="#4-部署" class="headerlink" title="4.部署"></a>4.部署</h2><p><code>hexo deploy</code></p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"&gt;
+    &lt;!--1.扫描service下的包--&gt;
+    &lt;context:component-scan base-package="com.course.service"/&gt;
+    &lt;!--2.将我们的所有业务类,注入到spring,可以通过配置,或者注解实现--&gt;
+    &lt;bean id="UserServiceImpl" class="com.course.service.UserServiceImpl"&gt;
+        &lt;property name="userMapper" ref="userMapper"/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+<h1 id="8-创建spring-mvc-xml文件"><a href="#8-创建spring-mvc-xml文件" class="headerlink" title="8.创建spring-mvc.xml文件"></a>8.创建spring-mvc.xml文件</h1><p>在resource文件中创建spring-mvc.xml文件 , 主要实现以下操作</p>
 <blockquote>
-<p>hexo d</p>
+<ol>
+<li>注解驱动</li>
+<li>静态资源过滤</li>
+<li>扫描controller包</li>
+<li>视图解析器</li>
+</ol>
 </blockquote>
-<h1 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h1><p>先新建一篇文章，一般会生成一个.md文件在\source_posts\文档下。</p>
-<p>md文件的编写语法百度一下就有。</p>
-<p>写完之后执行<code>hexo g -d</code>部署就完事了。</p>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc.xsd
+       http://www.springframework.org/schema/context
+       https://www.springframework.org/schema/context/spring-context.xsd"&gt;
+    &lt;!--1.注解驱动--&gt;
+    &lt;mvc:annotation-driven/&gt;
+    &lt;!--2.静态资源过滤--&gt;
+    &lt;mvc:default-servlet-handler/&gt;
+    &lt;!--3.扫描包:controller--&gt;
+    &lt;context:component-scan base-package="com.course.controller"/&gt;
+    &lt;!--4.视图解析器--&gt;
+    &lt;bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"&gt;
+        &lt;property name="prefix" value="/web-inf"/&gt;
+        &lt;property name="suffix" value=".jsp"/&gt;
+    &lt;/bean&gt;
+&lt;/beans&gt;
+</code></pre>
+<h1 id="9-配置web-xml文件"><a href="#9-配置web-xml文件" class="headerlink" title="9.配置web.xml文件"></a>9.配置web.xml文件</h1><p>配置web - WEB-INF中的web.xml文件 , 主要实现以下操作</p>
+<blockquote>
+<ol>
+<li>DispatchServlet</li>
+<li>乱码过滤</li>
+<li>Session</li>
+</ol>
+</blockquote>
+<pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0"&gt;
+    &lt;!--DispatchServlet--&gt;
+    &lt;servlet&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;servlet-class&gt;org.springframework.web.servlet.DispatcherServlet&lt;/servlet-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;contextConfigLocation&lt;/param-name&gt;
+            &lt;param-value&gt;classpath:spring-mvc.xml&lt;/param-value&gt;
+        &lt;/init-param&gt;
+        &lt;load-on-startup&gt;1&lt;/load-on-startup&gt;
+    &lt;/servlet&gt;
+    &lt;servlet-mapping&gt;
+        &lt;servlet-name&gt;springmvc&lt;/servlet-name&gt;
+        &lt;url-pattern&gt;/&lt;/url-pattern&gt;
+    &lt;/servlet-mapping&gt;
+    &lt;!--乱码过滤--&gt;
+    &lt;filter&gt;
+        &lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+        &lt;filter-class&gt;org.springframework.web.filter.CharacterEncodingFilter&lt;/filter-class&gt;
+        &lt;init-param&gt;
+            &lt;param-name&gt;encoding&lt;/param-name&gt;
+            &lt;param-value&gt;utf-8&lt;/param-value&gt;
+        &lt;/init-param&gt;
+    &lt;/filter&gt;
+    &lt;filter-mapping&gt;
+        &lt;filter-name&gt;encodingFilter&lt;/filter-name&gt;
+        &lt;url-pattern&gt;/*&lt;/url-pattern&gt;
+    &lt;/filter-mapping&gt;
+    &lt;!--Session--&gt;
+    &lt;session-config&gt;
+        &lt;session-timeout&gt;15&lt;/session-timeout&gt;
+    &lt;/session-config&gt;
+&lt;/web-app&gt;
+</code></pre>
+<h1 id="10-配置applicationContext-xml文件"><a href="#10-配置applicationContext-xml文件" class="headerlink" title="10.配置applicationContext.xml文件"></a>10.配置applicationContext.xml文件</h1><pre><code>&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"&gt;
+    
+    &lt;import resource="classpath:spring-dao.xml"/&gt;
+    &lt;import resource="classpath:spring-service.xml"/&gt;
+    &lt;import resource="classpath:spring-mvc.xml"/&gt;
+&lt;/beans&gt;
+</code></pre>
+<h1 id="11-创建jsp页面"><a href="#11-创建jsp页面" class="headerlink" title="11.创建jsp页面"></a>11.创建jsp页面</h1><p>在web - WEB-INF文件夹中创建jsp文件夹</p>
+<p>在controller层中创建controller类 , 使用@Controller注解 , @RequestMapping(“\user”)</p>
+<p>在controller类中调service层</p>
+<pre><code>@Autowired
+@Qualifier("userServiceImpl")
+private UserService userService;
+//查询全部用户 , 并且返回一个用户展示页面
+@RequestMapping("/allUser")
+public String list(Model model){
+  List&lt;User&gt; list = userService.queryAllUser();
+  model.addAttribute("list",list);
+  return "allUser";
+}
+</code></pre>
+<p>在jsp文件夹中创建allUser.jsp页面</p>
+<p><strong>至此 , 一个ssm项目底层搭建完毕</strong></p>
 
                 
             </div>
@@ -429,7 +852,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://btzz996.github.io/2021/122616647.html">http://btzz996.github.io/2021/122616647.html</a>
+                    <a href="http://btzz996.github.io/2022/041856548.html">http://btzz996.github.io/2022/041856548.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -467,12 +890,8 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hexo/">
-                                    <span class="chip bg-color">hexo</span>
-                                </a>
-                            
-                                <a href="/tags/git/">
-                                    <span class="chip bg-color">git</span>
+                                <a href="/tags/JAVA/">
+                                    <span class="chip bg-color">JAVA</span>
                                 </a>
                             
                         </div>
@@ -642,17 +1061,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2021/122729800.html">
+                <a href="/2022/041856548.html">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="hexo博客中如何插入图片">
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="快速搭建ssm项目">
                         
-                        <span class="card-title">hexo博客中如何插入图片</span>
+                        <span class="card-title">快速搭建ssm项目</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -662,9 +1082,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-12-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-04-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -673,11 +1093,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hexo/">
-                        <span class="chip bg-color">hexo</span>
+                    <a href="/tags/JAVA/">
+                        <span class="chip bg-color">JAVA</span>
                     </a>
                     
                 </div>
@@ -691,13 +1112,12 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/050316107.html">
+                <a href="/2021/122732385.html">
                     <div class="card-image">
                         
+                        <img src="/medias/featureimages/test.jpg" class="responsive-img" alt="如何看黄历">
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">如何看黄历</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -708,7 +1128,7 @@
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-05-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-12-27
                             </span>
                         <span class="publish-author">
                             
@@ -717,6 +1137,14 @@
                             
                         </span>
                     </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BC%A0%E7%BB%9F%E6%96%87%E5%8C%96/">
+                        <span class="chip bg-color">传统文化</span>
+                    </a>
+                    
                 </div>
                 
             </div>

@@ -6,7 +6,7 @@
   <link href="http://btzz996.github.io/atom.xml" rel="self"/>
   
   <link href="http://btzz996.github.io/"/>
-  <updated>2021-12-27T16:08:57.108Z</updated>
+  <updated>2022-04-18T17:09:19.183Z</updated>
   <id>http://btzz996.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>快速搭建ssm项目</title>
+    <link href="http://btzz996.github.io/2022/041856548.html"/>
+    <id>http://btzz996.github.io/2022/041856548.html</id>
+    <published>2022-04-18T15:00:33.000Z</published>
+    <updated>2022-04-18T17:09:19.183Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-创建maven项目&quot;&gt;&lt;a href=&quot;#1-创建maven项目&quot; class=&quot;headerlink&quot; title=&quot;1.创建maven项目&quot;&gt;&lt;/a&gt;1.创建maven项目&lt;/h1&gt;&lt;p&gt;创建完成后右键项目名称 , Add Framework</summary>
+        
+      
+    
+    
+    
+    
+    <category term="JAVA" scheme="http://btzz996.github.io/tags/JAVA/"/>
+    
+  </entry>
   
   <entry>
     <title>如何看黄历</title>
