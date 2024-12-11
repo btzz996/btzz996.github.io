@@ -98,7 +98,7 @@
         const spinBtn = document.getElementById("spinBtn");
  
         // 奖品数组和颜色
-        const segments = ["塔斯汀", "快乐番薯", "糯米饭", "张亮", "炸串","泡面","二食堂-临榆炸鸡腿","二食堂-拌粉","二食堂-馄饨","二食堂-饺子","二食堂-肠粉",
+        const segments = ["塔斯汀", "快乐番薯", "糯米饭", "张亮", "炸串","泡面","金鑫粉面馆","二食堂-临榆炸鸡腿","二食堂-拌粉","二食堂-馄饨","二食堂-饺子","二食堂-肠粉",
         "二食堂-麻辣香锅","二食堂-螺蛳粉","一食堂-小锅焖面","一食堂-兰州拉面","一食堂-烤鸭饭","一食堂-土豆泥饭"];
         const segmentColors = ["#FF6B6B", "#FFD93D", "#6BCB77", "#4D96FF", "#C34A36","#5a191b","#813c85","#2775b6","#41b349","#9fa39a","#fed71a","#fc8c23",
         "#cf4813","#4b2e2b","#5bae23","#806d9e","#ec9bad","#158bb8"];
@@ -110,7 +110,8 @@
         let animationFrame;
         let maxRotationTime = 5000; // 最大旋转时间，单位为毫秒
         let stopSpinningTimeout;
- 
+        let count = 0;
+
         // 绘制转盘
         function drawWheel() {
             ctx.clearRect(0, 0, wheelCanvas.width, wheelCanvas.height);
@@ -141,11 +142,16 @@
  
         // 开始旋转转盘
         function spinWheel() {
+            if(count>=5){
+                alert(`这么挑，吃牛魔，别吃了，吃屎去吧`);
+                return;
+            }
+            count+=1;
             if (!spinning) {
                 spinning = true;
                 currentSpeed = Math.random() * 0.3 + 0.2; // 随机最大速度
                 requestAnimationFrame(rotateWheel);
- 
+                
                 // 设置在最大旋转时间后开始减速
                 stopSpinningTimeout = setTimeout(() => {
                     startDecelerating();
