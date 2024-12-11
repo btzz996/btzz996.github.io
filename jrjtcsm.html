@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>江软今天吃什么</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+ 
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa;
+            /* 轻松的浅蓝色背景 */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: #333;
+        }
+ 
+        .container {
+            text-align: center;
+        }
+ 
+        h1 {
+            font-size: 32px;
+            color: #00796b;
+            margin-bottom: 20px;
+        }
+ 
+        .wheel-container {
+            position: relative;
+            margin: 0 auto;
+        }
+ 
+        canvas {
+            border: 10px solid #00796b;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+ 
+        /* 指针样式 */
+        .pointer {
+            position: absolute;
+            top: 235px;
+            /* 调整指针位置 */
+            left: 100%;
+            transform: translateX(-50%)rotate(-90deg);
+            width: 0;
+            height: 0;
+            border-left: 20px solid transparent;
+            border-right: 20px solid transparent;
+            border-bottom: 40px solid #d32f2f;
+            /* 红色指针 */
+            z-index: 10;
+        }
+ 
+        button {
+            margin-top: 30px;
+            padding: 15px 30px;
+            font-size: 20px;
+            background-color: #00796b;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+ 
+        button:hover {
+            background-color: #004d40;
+        }
+ 
+        button:active {
+            background-color: #00251a;
+        }
+    </style>
+</head>
+ 
+<body>
+    <div class="container">
+        <h1>江软今天吃什么</h1>
+        <div class="wheel-container">
+            <div class="pointer"></div> <!-- 添加指针 -->
+            <canvas id="wheelCanvas" width="500" height="500"></canvas>
+        </div>
+        <button id="spinBtn">开始抽奖</button>
+    </div>
+    <script>
+        const wheelCanvas = document.getElementById("wheelCanvas");
+        const ctx = wheelCanvas.getContext("2d");
+        const spinBtn = document.getElementById("spinBtn");
+ 
+        // 奖品数组和颜色
+        const segments = ["塔斯汀", "快乐番薯", "糯米饭", "张亮", "炸串","泡面","二食堂-临榆炸鸡腿","二食堂-拌粉","二食堂-馄饨","二食堂-饺子","二食堂-肠粉",
+        "二食堂-麻辣香锅","二食堂-螺蛳粉","一食堂-小锅焖面","一食堂-兰州拉面","一食堂-烤鸭饭","一食堂-土豆泥饭"];
+        const segmentColors = ["#FF6B6B", "#FFD93D", "#6BCB77", "#4D96FF", "#C34A36","#5a191b","#813c85","#2775b6","#41b349","#9fa39a","#fed71a","#fc8c23",
+        "#cf4813","#4b2e2b","#5bae23","#806d9e","#ec9bad","#158bb8"];
+ 
+        const numSegments = segments.length;
+        const anglePerSegment = (2 * Math.PI) / numSegments; // 每个奖品占据的角度
+        let currentAngle = 0; // 当前旋转的总角度
+        let spinning = false;
+        let animationFrame;
+        let maxRotationTime = 5000; // 最大旋转时间，单位为毫秒
+        let stopSpinningTimeout;
+ 
+        // 绘制转盘
+        function drawWheel() {
+            ctx.clearRect(0, 0, wheelCanvas.width, wheelCanvas.height);
+            for (let i = 0; i < numSegments; i++) {
+                const angle = currentAngle + i * anglePerSegment;
+                ctx.beginPath();
+                ctx.moveTo(250, 250);
+                ctx.arc(250, 250, 250, angle, angle + anglePerSegment);
+                ctx.fillStyle = segmentColors[i];
+                ctx.fill();
+                ctx.save();
+ 
+                // 绘制奖品名称
+                ctx.translate(250, 250);
+                ctx.rotate(angle + anglePerSegment / 2);
+                ctx.textAlign = "center";
+                ctx.fillStyle = "#FFF";
+                ctx.font = "bold 20px Arial";
+                ctx.fillText(segments[i], 150, 10);
+                ctx.restore();
+            }
+        }
+ 
+        // 平滑旋转效果
+        let maxSpeed = 0;
+        let currentSpeed = 0;
+        let deceleration = 0.0002; // 每帧减速量
+ 
+        // 开始旋转转盘
+        function spinWheel() {
+            if (!spinning) {
+                spinning = true;
+                currentSpeed = Math.random() * 0.3 + 0.2; // 随机最大速度
+                requestAnimationFrame(rotateWheel);
+ 
+                // 设置在最大旋转时间后开始减速
+                stopSpinningTimeout = setTimeout(() => {
+                    startDecelerating();
+                }, maxRotationTime);
+            }
+        }
+ 
+        // 开始减速
+        function startDecelerating() {
+            deceleration = 0.002; // 设置一个合理的减速值
+        }
+ 
+        // 动态旋转转盘
+        function rotateWheel() {
+            if (!spinning) return;
+ 
+            if (currentSpeed > 0) {
+                currentAngle += currentSpeed; // 增加旋转角度
+                currentSpeed -= deceleration; // 逐渐减速
+                if (currentSpeed < 0) currentSpeed = 0; // 防止负速度
+            }
+ 
+            drawWheel(); // 每次旋转时重新绘制转盘
+            currentAngle = currentAngle % (2 * Math.PI); // 确保角度不超过 360 度
+ 
+            if (currentSpeed > 0) {
+                animationFrame = requestAnimationFrame(rotateWheel);
+            } else {
+                spinning = false;
+                cancelAnimationFrame(animationFrame);
+                clearTimeout(stopSpinningTimeout);
+                calculateResult();
+            }
+        }
+ 
+        // 计算中奖结果
+        function calculateResult() {
+            // 获取最终停止时的角度，并确定指针指向的奖品
+            const finalAngle = (2 * Math.PI - currentAngle) % (2 * Math.PI);
+            const segmentIndex = Math.floor(finalAngle / anglePerSegment);
+            alert(`江软今天吃: ${segments[segmentIndex]}!`);
+        }
+ 
+        // 绑定按钮事件
+        spinBtn.addEventListener("click", spinWheel);
+ 
+        // 初次绘制转盘
+        drawWheel();
+ 
+    </script>
+</body>
+ 
+</html>
