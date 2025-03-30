@@ -9,16 +9,23 @@
             padding: 20px;
         }
         .container {
-            max-width: 800px;
+            max-width: 80%;
             margin: 0 auto;
         }
         .controls {
             margin-bottom: 20px;
+            font-size: 1.2em;
+        }
+        .controls span{
+            margin-bottom: 20px;
+            font-size: 1.2em;
         }
         select, button {
             padding: 8px;
             margin-right: 10px;
-            font-size: 16px;
+            font-size: 1em;
+            width: 20%;
+            height: 60px;
         }
         table {
             border-collapse: collapse;
@@ -51,13 +58,13 @@
 </head>
 <body>
     <div class="container">
-      <div>
+      <div style="font-size: 1.2em;">
         <p>这是一个按月随机生成高潮管理的网站，用户可以选择月份和难度进行随机生成。</p>
         <hr/>
-        <div style="font-weight: bold;"><div style="background-color: #ffcccc;width: 20px;height: 20px;display: inline-block;"></div> 红色 禁止日: 禁止触摸！禁止高潮！</div>
+        <div style="font-weight: bold;"><div style="background-color: #ffcccc;width: 20px;height: 20px;display: inline-block;"></div> 红色 禁止日: 禁止触摸！禁止高潮！<span style="color: #ff0000;">生理期一律为禁止日！</span></div>
         <div style="font-weight: bold;"><div style="background-color: #ffffcc;width: 20px;height: 20px;display: inline-block;"></div> 黄色 边缘日: 必须边缘日期右下角次数且只能达到边缘！</div>
         <div style="font-weight: bold;"><div style="background-color: #ccffcc;width: 20px;height: 20px;display: inline-block;"></div> 绿色 放纵日: 必须自慰且达到高潮日期右下角次数！</div>
-        <div style="font-weight: bold;"><div style="background-color: #cce6ff;width: 20px;height: 20px;display: inline-block;"></div> 蓝色 请求日: 向任何人发起高潮请求，对方同意即可高潮，不同意则禁止！<br/>(也可以根据日期右下角数字为单数则允许，双数则禁止)</div>
+        <div style="font-weight: bold;"><div style="background-color: #cce6ff;width: 20px;height: 20px;display: inline-block;"></div> 蓝色 请求日: 向任何人发起高潮请求，对方同意后至多高潮一次，不同意则边缘三次！<br/>(也可以根据日期右下角数字为单数则允许，双数则禁止)</div>
         <hr/>
         <p style="font-weight: bold;">请自行截图保存！请自行截图保存！请自行截图保存！</p>
       </div>
@@ -142,23 +149,23 @@
             const num = parseInt(document.getElementById('difficulty').value);
             if(num==0){
               COLOR_PROBABILITY = [
-                  { color: '#ffcccc', weight: 25 }, // 红色 25%
-                  { color: '#ffffcc', weight: 25 }, // 黄色 25%
-                  { color: '#cce6ff', weight: 25 }, // 蓝色 25%
-                  { color: '#ccffcc', weight: 25 }   // 绿色 25%
-              ];
-            }else if(num==1){
-              COLOR_PROBABILITY = [
                   { color: '#ffcccc', weight: 30 }, // 红色 30%
                   { color: '#ffffcc', weight: 30 }, // 黄色 30%
                   { color: '#cce6ff', weight: 25 }, // 蓝色 25%
                   { color: '#ccffcc', weight: 15 }   // 绿色 15%
               ];
+            }else if(num==1){
+              COLOR_PROBABILITY = [
+                  { color: '#ffcccc', weight: 30 }, // 红色 30%
+                  { color: '#ffffcc', weight: 35 }, // 黄色 35%
+                  { color: '#cce6ff', weight: 25 }, // 蓝色 25%
+                  { color: '#ccffcc', weight: 10 }   // 绿色 10%
+              ];
             }else if(num==2){
               COLOR_PROBABILITY = [
-                  { color: '#ffcccc', weight: 40 }, // 红色 40%
-                  { color: '#ffffcc', weight: 30 }, // 黄色 30%
-                  { color: '#cce6ff', weight: 25 }, // 蓝色 25%
+                  { color: '#ffcccc', weight: 35 }, // 红色 35%
+                  { color: '#ffffcc', weight: 40 }, // 黄色 40%
+                  { color: '#cce6ff', weight: 20 }, // 蓝色 20%
                   { color: '#ccffcc', weight: 5 }   // 绿色 5%
               ];
             }
