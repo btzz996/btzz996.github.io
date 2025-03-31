@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+      body {
+          margin: 0;
+          height: 100vh;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: background-color 0.5s;
+          position: relative;
+          overflow: hidden;
+          flex-direction: column; /* 移动端垂直排列 */
+      }
+
+      #vignette {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.5));
+          animation: breath 2s infinite;
+          opacity: 0;
+      }
+
+      button {
+            padding: 0; /* 移除原有padding */
+            width: 200px; /* 基础尺寸 */
+            height: 200px;
+            border-radius: 50%; /* 圆形 */
+            font-size: 1.2rem;
+            margin: 10px;
+            cursor: pointer;
+            z-index: 1;
+            border: none;
+            background: #ffffff;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.16);
+            transition: all 0.3s;
+            display: flex; /* 文字居中 */
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            top: 80%;
+        }
+        .show-message {
+            opacity: 1 !important;
+        }
+      /* 手机适配 */
+      @media (max-width: 768px) {
+        button {
+                width: 200px;
+                height: 200px;
+                font-size: 1.1rem;
+                position: fixed;
+                top:70%;
+                left: auto;
+            }
+
+          body {
+              padding: 20px; /* 增加安全边距 */
+              justify-content: flex-start; /* 顶部开始布局 */
+              padding-top: 40px;
+          }
+      }
+
+      /* 小尺寸手机适配 */
+      @media (max-width: 480px) {
+        button {
+                width: 150px;
+                height: 150px;
+                font-size: 1rem;
+                position: fixed;
+                top: 70%;
+                left: 30%;
+            }
+      }
+
+      @keyframes breath {
+          0%, 100% { opacity: 0.3; }
+          50% { opacity: 0.7; }
+      }
+      
+              /* 悬停效果 */
+        button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 12px rgba(0,0,0,0.2);
+        }
+
+        button:active {
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <h1 style="position: fixed; top: 5%;" id="message1">&emsp;&emsp;准备好自慰时点击开始，根据背景颜色和闪烁频率控制节奏，在快要高潮前点击结束按钮。</h1>
+    <h2 style="position: fixed; top: 35%;" id="message2">&emsp;&emsp;为了方便搭配其他辅助手段(如小视频、小说等)，可以小窗或分屏后根据背景颜色来控制节奏，<br/>绿色：快速<br/>蓝色：中速<br/>黄色：慢速<br/>红色：停止</h2>
+    <br/>
+    <div>
+        <button id="controlBtn">开始</button>
+    </div>
+    <div id="vignette"></div>
+
+    <script>
+        // 颜色提示语配置
+        const colorMessages2 = {
+            '#ff0000': ["骚货，把你的手停下", "休息一会儿，调整好呼吸", "贱货，手不许动", "停下，你不配享受快感"],
+            '#ffff00': ["速度慢下来", "控制好节奏哦", "慢慢感受手指的触碰", "注意力集中"],
+            '#0000ff': ["看看你现在的骚样", "你这种骚货就该被狠狠玩弄", "我会玩坏你这个骚货的", "舒服吗小骚货"],
+            '#00ff00': ["速度快点，骚货", "爽不爽啊，贱货", "水越来越多了呢", "感受这快感吧"]
+        };
+        const colorMessages1 = {
+            '#ff0000': ["手拿开", "腿张开", "停下", "用力掰开","腿张开"],
+            '#ffff00': ["掰开 上下划", "掰开 摁住阴蒂 顺时针揉", "摁住阴蒂 逆时针揉", "手指击打阴蒂","掰开 摁住阴蒂 上下揉"],
+            '#0000ff': ["掰开 上下划", "摁住阴蒂 顺时针揉", "摁住阴蒂 上下揉", "摁住阴蒂 左右揉","掰开 摁住阴蒂 逆时针揉"],
+            '#00ff00': ["摁住阴蒂 顺时针揉", "掰开 摁住阴蒂 上下揉", "摁住阴蒂 逆时针揉", "掰开 摁住阴蒂 左右揉","掰开 上下划"]
+        };
+
+        // 新增变量
+        let messageTimeout;
+        const message1Element = document.getElementById('message1');
+        const message2Element = document.getElementById('message2');
+
+        const colorWeights = [
+            { color: '#ff0000', weight: 2 },  // 红色 (20%)
+            { color: '#ffff00', weight: 2 },  // 黄色 (20%)
+            { color: '#0000ff', weight: 3 },  // 蓝色 (30%)
+            { color: '#00ff00', weight: 3 }   // 绿色 (30%)
+        ];
+        let timeout;
+        let vignette = document.getElementById('vignette');
+        let isRunning = false;
+
+        // 修改后的颜色切换函数
+        function changeColor() {
+            const color = getRandomColor();
+            const duration = getRandomTime(color);
+            
+            // 立即隐藏当前提示
+            message1Element.classList.remove('show-message');
+            message2Element.classList.remove('show-message');
+            
+            // 设置新颜色和提示语
+            setTimeout(() => {
+                document.body.style.backgroundColor = color;
+                setAnimationSpeed(color);
+                showRandomMessage(color);
+            }, 500); // 等待过渡动画完成
+
+            // 设置下次切换
+            timeout = setTimeout(() => {
+                changeColor();
+                message1Element.classList.remove('show-message');
+                message2Element.classList.remove('show-message');
+            }, duration);
+
+            // 设置提示语隐藏时间（提前500ms淡出）
+            clearTimeout(messageTimeout);
+            messageTimeout = setTimeout(() => {
+                message1Element.classList.remove('show-message');
+                message2Element.classList.remove('show-message');
+            }, duration - 500);
+        }
+
+        // 优化提示语显示函数
+        function showRandomMessage(color) {
+            const messages1 = colorMessages1[color];
+            const messages2 = colorMessages2[color];
+            if (messages1?.length) {
+                message1Element.textContent = messages1[Math.floor(Math.random() * messages1.length)];
+                message1Element.classList.add('show-message');
+            }
+            if (messages2?.length) {
+                message2Element.textContent = messages2[Math.floor(Math.random() * messages2.length)];
+                message2Element.classList.add('show-message');
+            }
+        }
+
+        function getRandomColor() {
+            const totalWeight = colorWeights.reduce((sum, cw) => sum + cw.weight, 0);
+            const random = Math.random() * totalWeight;
+            let cumulative = 0;
+            
+            for (const cw of colorWeights) {
+                cumulative += cw.weight;
+                if (random <= cumulative) {
+                    return cw.color;
+                }
+            }
+            return colorWeights[0].color;
+        }
+
+        function getRandomTime(color) {
+            switch(color) {
+                case '#00ff00': // 绿色
+                    return Math.floor(Math.random() * 7000) + 3000; // 3-10秒
+                case '#0000ff': // 蓝色
+                    return Math.floor(Math.random() * 9000) + 6000; // 6-15秒
+                case '#ffff00': // 黄色
+                    return Math.floor(Math.random() * 10000) + 10000; // 10-20秒
+                case '#ff0000': // 红色
+                    return Math.floor(Math.random() * 20000) + 10000; // 10-30秒
+            }
+        }
+
+        function setAnimationSpeed(color) {
+            vignette.style.animationPlayState = 'running';
+            switch(color) {
+                case '#00ff00':
+                    vignette.style.animationDuration = '0.3s';
+                    break;
+                case '#0000ff':
+                    vignette.style.animationDuration = '0.6s';
+                    break;
+                case '#ffff00':
+                    vignette.style.animationDuration = '1s';
+                    break;
+                case '#ff0000':
+                    vignette.style.animationPlayState = 'paused';
+                    break;
+            }
+        }
+
+        function startEffect() {
+            isRunning = true;
+            document.getElementById('controlBtn').textContent = '结束';
+            
+            // function changeColor() {
+            //     const color = getRandomColor();
+            //     document.body.style.backgroundColor = color;
+            //     setAnimationSpeed(color);
+            //     timeout = setTimeout(changeColor, getRandomTime(color));
+            // }
+            
+            vignette.style.opacity = '0.5';
+            vignette.style.animation = 'breath 2s infinite'; // 重置动画
+            changeColor();
+        }
+
+        // 修改停止函数
+        function stopEffect() {
+            clearTimeout(timeout);
+            clearTimeout(messageTimeout);
+            isRunning = false;
+            document.getElementById('controlBtn').textContent = '开始';
+            vignette.style.animation = 'none';
+            vignette.style.opacity = '0';
+            
+            const finalColor = Math.random() > 0.5 ? '#ff0000' : '#00ff00';
+            document.body.style.backgroundColor = finalColor;
+            //showRandomMessage(finalColor);
+            if(finalColor=="#00ff00"){
+              message1Element.textContent = "享受高潮吧骚货";
+              message1Element.classList.add('show-message');
+              message2Element.textContent = "记得感谢我对你的赏赐哦"
+              message2Element.classList.add('show-message');
+            }else{
+              message1Element.textContent = "停下，把手拿开";
+              message1Element.classList.add('show-message');
+              message2Element.textContent = "你这种骚货就不配享受高潮"
+              message2Element.classList.add('show-message');
+            }
+        }
+
+        document.getElementById('controlBtn').addEventListener('click', () => {
+            isRunning ? stopEffect() : startEffect();
+        });
+    </script>
+</body>
+</html>
