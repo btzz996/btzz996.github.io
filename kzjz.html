@@ -70,7 +70,7 @@
             align-items: center;
             gap: 8px;
             position: relative;
-            top:100px;
+            top:110px;
         }
 
         #showText {
@@ -102,7 +102,7 @@
                 height: 200px;
                 font-size: 1.1rem;
                 position: fixed;
-                top:70%;
+                top:72%;
                 left: auto;
             }
 
@@ -111,21 +111,26 @@
               justify-content: flex-start; /* 顶部开始布局 */
               padding-top: 40px;
           }
+          #showTextLabel {
+            position: fixed;
+            top:68%;
+            left: 20%;
+        }
       }
 
       /* 小尺寸手机适配 */
       @media (max-width: 480px) {
         button {
-                width: 150px;
-                height: 150px;
+                width: 145px;
+                height: 145px;
                 font-size: 1rem;
                 position: fixed;
-                top: 70%;
+                top: 72%;
                 left: 30%;
             }
         #showTextLabel {
             position: fixed;
-            top:65%;
+            top:68%;
             left: 20%;
         }
       }
@@ -148,7 +153,7 @@
 </head>
 <body>
     <h1 style="position: fixed; top: 5%;" id="message1">&emsp;&emsp;准备好自慰时点击开始，根据背景颜色和闪烁频率控制节奏，在快要高潮前点击结束按钮。</h1>
-    <h2 style="position: fixed; top: 35%;" id="message2">&emsp;&emsp;为了方便搭配其他辅助手段(如小视频、小说等)，可以小窗或分屏后根据背景颜色来控制节奏，<br/>绿色：快速<br/>蓝色：中速<br/>黄色：慢速<br/>红色：停止</h2>
+    <h2 style="position: fixed; top: 30%;" id="message2">&emsp;&emsp;为了方便搭配其他辅助手段(如小视频、小说等)，可以小窗或分屏后根据背景颜色来控制节奏，<br/>绿色：快速<br/>蓝色：中速<br/>黄色：慢速<br/>红色：停止</h2>
     <br/>
     <div id="btnDiv">
         <button id="controlBtn">开始</button>
