@@ -581,7 +581,7 @@
         }
 
         function parseValue(value) {
-          try {
+            try {
                 if (/(?:^|,)(?:\s*"(?:\\"|[^"])*"\s*)(?:,|$)/.test(value)) {
                     try {
                         // 尝试解析为数组
@@ -594,6 +594,7 @@
                 // 尝试解析为JSON值
                 if(value === 'true') return true;
                 if(value === 'false') return false;
+                if(value === 'null') return null;
                 if(!isNaN(value) && value !== '') return Number(value);
                 return JSON.parse(`"${value}"`);
             } catch {
