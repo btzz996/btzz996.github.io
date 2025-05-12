@@ -130,6 +130,8 @@
             min-height: 24px;
             white-space: pre-wrap; /* 允许自动换行 */
             word-break: break-all;
+            text-rendering: optimizeLegibility; /* 优化字体渲染 */
+            -webkit-font-smoothing: subpixel-antialiased; /* Mac优化 */
         }
 
         .json-key { color: #ff6b6b; }
@@ -234,10 +236,14 @@
         .json-key { 
             color: #ff6b6b;
             font-weight: 700; /* 特别加粗 */
+            text-rendering: optimizeLegibility; /* 优化字体渲染 */
+            -webkit-font-smoothing: subpixel-antialiased; /* Mac优化 */
         }
         .json-string { 
             color: #6c5ce7;
             font-weight: 600;
+            text-rendering: optimizeLegibility; /* 优化字体渲染 */
+            -webkit-font-smoothing: subpixel-antialiased; /* Mac优化 */
         }
         .json-escape {
             color: #00cecb;
@@ -246,14 +252,20 @@
         .json-number { 
             color: #6c5ce7;
             font-weight: 600;
+            text-rendering: optimizeLegibility; /* 优化字体渲染 */
+            -webkit-font-smoothing: subpixel-antialiased; /* Mac优化 */
         }
         .json-boolean { 
             color: #ff8c00;
             font-weight: 600;
+            text-rendering: optimizeLegibility; /* 优化字体渲染 */
+            -webkit-font-smoothing: subpixel-antialiased; /* Mac优化 */
         }
         .json-null {
             color: #999;
             font-weight: 600;
+            text-rendering: optimizeLegibility; /* 优化字体渲染 */
+            -webkit-font-smoothing: subpixel-antialiased; /* Mac优化 */
         }
         .json-bracket { 
             color: #333;
@@ -341,6 +353,21 @@
 
         body.dark .toolbar-icon:hover {
             background: rgba(255, 255, 255, 0.08);
+        }
+        /* 移动端优化 */
+        @media screen and (max-width: 768px) {
+            .code-content {
+                text-size-adjust: 100%; /* 禁用字体自动调整 */
+                -webkit-text-size-adjust: 100%;
+            }
+            
+            /* 英文加粗补偿 */
+            .json-key,
+            .json-string,
+            .json-number {
+                font-weight: 700 !important;
+                letter-spacing: -0.02em; /* 微调字间距 */
+            }
         }
 
     </style>
@@ -605,7 +632,7 @@
         document.querySelector('.json-value').value = '冰糖zz';
         addNewRow();
         document.querySelectorAll('.json-key')[1].value = 'title';
-        document.querySelectorAll('.json-value')[1].value = 'Developer';
+        document.querySelectorAll('.json-value')[1].value = '"Developer","Astrologer"';
         addNewRow();
         document.querySelectorAll('.json-key')[2].value = 'email';
         document.querySelectorAll('.json-value')[2].value = 'lwblyk@qq.com';
@@ -613,7 +640,7 @@
         // JSON数据
         const profileData = {
             "name": "冰糖zz",
-            "title": "Developer",
+            "title": ["Developer","Astrologer"],
             "email": "lwblyk@qq.com"
         };
 
